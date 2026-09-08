@@ -1,0 +1,76 @@
+[gd_scene format=3 uid="uid://bbtau76klpor7"]
+
+[ext_resource type="Texture2D" uid="uid://be8hhu6ukkwre" path="res://assets/creature-sheet.png" id="1_3vyb7"]
+
+[sub_resource type="Animation" id="Animation_g2els"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_qhqgy"]
+resource_name = "idle"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_dqkch"]
+resource_name = "run"
+length = 0.4000100059606135
+loop_mode = 1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_qlg0r"]
+_data = {
+&"RESET": SubResource("Animation_g2els"),
+&"idle": SubResource("Animation_qhqgy"),
+&"run": SubResource("Animation_dqkch")
+}
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_pgcma"]
+radius = 7.0
+
+[node name="Player" type="Node2D" unique_id=1375727858]
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1652464477]
+texture = ExtResource("1_3vyb7")
+offset = Vector2(0, -12)
+hframes = 4
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=377733578]
+libraries/ = SubResource("AnimationLibrary_qlg0r")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2037376327]
+position = Vector2(0, -8)
+shape = SubResource("CircleShape2D_pgcma")
