@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="maevorn"
-run/main_scene="uid://bbtau76klpor7"
+run/main_scene="uid://cq4ra7mg5t02s"
 config/features=PackedStringArray("4.7", "Forward Plus")
 config/icon="res://icon.svg"
 
